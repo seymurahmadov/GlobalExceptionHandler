@@ -30,7 +30,6 @@ public class ProductEntity {
 
     String size;
 
-    @OneToOne
-    private Customer customer;
+
 
 }
