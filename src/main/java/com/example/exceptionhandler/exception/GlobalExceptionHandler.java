@@ -9,25 +9,25 @@ import java.util.ArrayList;
 import java.util.List;
 
 @RestControllerAdvice
-public class CustomExceptionHandler {
+public class GlobalExceptionHandler {
 
     @ExceptionHandler(ProductNotFoundException.class)
-    public ResponseEntity<?> productNotFoundException(ProductNotFoundException productNotFoundException){
+    public ResponseEntity<?> productNotFoundException(ProductNotFoundException productNotFoundException) {
 
         List<String> detail = new ArrayList<>();
         detail.add(productNotFoundException.getMessage());
-        ErrorResponse errorResponse= new ErrorResponse("Product not found", detail);
-        return new  ResponseEntity<> (errorResponse, HttpStatus.BAD_REQUEST);
+        ErrorResponse errorResponse = new ErrorResponse("Product not found", detail);
+        return new ResponseEntity<>(errorResponse, HttpStatus.BAD_REQUEST);
 
     }
 
     @ExceptionHandler(ProductNotNullException.class)
-    public ResponseEntity<?> productNotNullException(ProductNotNullException productNotNullException){
+    public ResponseEntity<?> productNotNullException(ProductNotNullException productNotNullException) {
 
         List<String> detail = new ArrayList<>();
         detail.add(productNotNullException.getMessage());
         ErrorResponse errorResponse = new ErrorResponse("Product not null", detail);
-        return new ResponseEntity<>(errorResponse,HttpStatus.BAD_REQUEST);
+        return new ResponseEntity<>(errorResponse, HttpStatus.BAD_REQUEST);
 
     }
 }
